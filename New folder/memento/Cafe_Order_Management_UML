@@ -1,0 +1,21 @@
+// Cafe Order Management UML Diagram
+digraph {
+	Cafe [label="Cafe
++ main(args: String[])"]
+	CafeOrder [label="CafeOrder
++ addItem(item: String)
++ getOrderDetails(): String
++ saveState(): OrderMemento
++ restoreState(memento: OrderMemento)"]
+	OrderMemento [label="OrderMemento
++ OrderMemento(items: List<String>)
++ getItems(): List<String>"]
+	OrderHistory [label="OrderHistory
++ OrderHistory(maxSize: int)
++ save(memento: OrderMemento)
++ undo(): OrderMemento"]
+	Cafe -> CafeOrder [label=uses]
+	CafeOrder -> OrderMemento [label=creates]
+	CafeOrder -> OrderHistory [label=uses]
+	OrderHistory -> OrderMemento [label=manages]
+}
